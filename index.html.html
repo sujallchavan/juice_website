@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshSqueeze - Premium Natural Juices</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #FF9800;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1603569283847-aa295f0d016a');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .juice-card {
+            transition: all 0.3s;
+            margin-bottom: 30px;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .juice-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .juice-img {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .juice-card:hover .juice-img {
+            transform: scale(1.05);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 25px;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3e8e41;
+            border-color: #3e8e41;
+            transform: translateY(-2px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 15px;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: """;
+            font-family: Georgia, serif;
+            font-size: 60px;
+            color: var(--primary-color);
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+        }
+        
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary-color), #8BC34A);
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 50px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: -10px;
+            left: 25%;
+        }
+        
+        .flavor-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--secondary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            text-decoration: none;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        /* Enhanced Reels Section Styles */
+    .reels-section {
+        background-color: #f8f9fa;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .reels-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://images.unsplash.com/photo-1551269901-5c5e14c25df7') center/cover no-repeat;
+        opacity: 0.03;
+        z-index: 0;
+    }
+    
+    .reel-card {
+        height: 350px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        background: #fff;
+    }
+    
+    .reel-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    
+    .reel-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.3s ease;
+    }
+    
+    .reel-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        z-index: 2;
+    }
+    
+    .reel-play-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    
+    .reel-play-btn:hover {
+        background: rgba(255,255,255,0.2);
+        transform: scale(1.1);
+    }
+    
+    .product-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 0.7rem;
+        font-weight: 600;
+    }
+        
+        /* Cart Styles */
+        .cart-icon {
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Cart Modal */
+        .cart-modal-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .cart-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        
+        /* Custom carousel controls */
+        .reels-carousel .carousel-control-prev,
+        .reels-carousel .carousel-control-next {
+            width: 5%;
+            background: rgba(0,0,0,0.2);
+            opacity: 1;
+        }
+        
+        .reels-carousel .carousel-control-prev:hover,
+        .reels-carousel .carousel-control-next:hover {
+            background: rgba(0,0,0,0.3);
+        }
+        
+        .reels-carousel .carousel-control-prev-icon,
+        .reels-carousel .carousel-control-next-icon {
+            background-size: 60%;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-glass-cheers me-2"></i>
+                FreshSqueeze
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reels">Juice Reels</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#benefits">Benefits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cart-icon" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+                <a href="#products" class="btn btn-light ms-lg-3">Shop Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-4">100% Natural Fruit Juices</h1>
+            <p class="lead fs-4">Freshly squeezed with no added sugars or preservatives</p>
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                <a href="#products" class="btn btn-primary btn-lg">Explore Flavors</a>
+                <a href="#benefits" class="btn btn-outline-light btn-lg">Learn Benefits</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">Our Juice Collection</h2>
+            <div class="row">
+                <!-- Juice 1 -->
+                <div class="col-md-4">
+                    <div class="card juice-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba" class="card-img-top juice-img" alt="Orange Juice">
+                            <span class="flavor-badge">Bestseller</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Orange Bliss</h5>
+                            <p class="card-text">Pure squeezed oranges with natural pulp for that authentic fresh taste.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-primary fs-5">$4.99</span>
+                                <button class="btn btn-sm btn-primary add-to-cart" data-id="1" data-name="Orange Bliss" data-price="4.99" data-image="https://images.unsplash.com/photo-1550258987-190a2d41a8ba">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Juice 2 -->
+                <div class="col-md-4">
+                    <div class="card juice-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a" class="card-img-top juice-img" alt="Apple Juice">
+                            <span class="flavor-badge">New</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Apple Crunch</h5>
+                            <p class="card-text">Crisp apple flavor with a hint of cinnamon for a refreshing experience.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-primary fs-5">$4.49</span>
+                                <button class="btn btn-sm btn-primary add-to-cart" data-id="2" data-name="Apple Crunch" data-price="4.49" data-image="https://images.unsplash.com/photo-1603569283847-aa295f0d016a">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Juice 3 -->
+                <div class="col-md-4">
+                    <div class="card juice-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a" class="card-img-top juice-img" alt="Berry Mix Juice">
+                            <span class="flavor-badge">Organic</span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Berry Mix</h5>
+                            <p class="card-text">A delicious blend of strawberries, blueberries, and raspberries.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-primary fs-5">$5.49</span>
+                                <button class="btn btn-sm btn-primary add-to-cart" data-id="3" data-name="Berry Mix" data-price="5.49" data-image="https://images.unsplash.com/photo-1603569283847-aa295f0d016a">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Juice 4 -->
+                <div class="col-md-4">
+                    <div class="card juice-card">
+                        <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a" class="card-img-top juice-img" alt="Tropical Juice">
+                        <div class="card-body">
+                            <h5 class="card-title">Tropical Paradise</h5>
+                            <p class="card-text">Exotic blend of pineapple, mango, and passion fruit.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-primary fs-5">$5.99</span>
+                                <button class="btn btn-sm btn-primary add-to-cart" data-id="4" data-name="Tropical Paradise" data-price="5.99" data-image="https://images.unsplash.com/photo-1603569283847-aa295f0d016a">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Juice 5 -->
+                <div class="col-md-4">
+                    <div class="card juice-card">
+                        <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a" class="card-img-top juice-img" alt="Green Detox Juice">
+                        <div class="card-body">
+                            <h5 class="card-title">Green Detox</h5>
+                            <p class="card-text">Kale, spinach, cucumber, and green apple for a healthy boost.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-primary fs-5">$6.49</span>
+                                <button class="btn btn-sm btn-primary add-to-cart" data-id="5" data-name="Green Detox" data-price="6.49" data-image="https://images.unsplash.com/photo-1603569283847-aa295f0d016a">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Juice 6 -->
+                <div class="col-md-4">
+                    <div class="card juice-card">
+                        <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a" class="card-img-top juice-img" alt="Carrot Juice">
+                        <div class="card-body">
+                            <h5 class="card-title">Carrot Zing</h5>
+                            <p class="card-text">Fresh carrots with a touch of ginger and orange.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-primary fs-5">$4.99</span>
+                                <button class="btn btn-sm btn-primary add-to-cart" data-id="6" data-name="Carrot Zing" data-price="4.99" data-image="https://images.unsplash.com/photo-1603569283847-aa295f0d016a">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-outline-primary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Juice Reels Section -->
+<section id="reels" class="reels-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 section-title">FreshSqueeze Moments</h2>
+        <p class="text-center mb-5">Discover our juices in action - hydration, health, and happiness!</p>
+        
+        <div class="row g-4">
+            <!-- Reel 1: Hydration Booster (similar to Lunar Hydration) -->
+            <div class="col-md-6 col-lg-3">
+                <div class="reel-card position-relative rounded-4 overflow-hidden">
+                    <video class="reel-video" loop muted playsinline poster="https://images.unsplash.com/photo-1551269901-5c5e14c25df7">
+                        <source src="https://example.com/videos/hydration-booster.mp4" type="video/mp4">
+                    </video>
+                    <div class="reel-overlay p-3">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h5 class="mb-1 text-white">Electrolyte Boost</h5>
+                                <p class="small text-white-50 mb-2">Hydration + Natural Energy</p>
+                            </div>
+                            <button class="btn btn-sm btn-outline-light reel-play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <div class="product-badge bg-primary text-white px-2 py-1 rounded-pill small">New Launch</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reel 2: Freeze-Dried Fruits (similar to Moon Store's approach) -->
+            <div class="col-md-6 col-lg-3">
+                <div class="reel-card position-relative rounded-4 overflow-hidden">
+                    <video class="reel-video" loop muted playsinline poster="https://images.unsplash.com/photo-1603569283847-aa295f0d016a">
+                        <source src="https://example.com/videos/freeze-dried-fruits.mp4" type="video/mp4">
+                    </video>
+                    <div class="reel-overlay p-3">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h5 class="mb-1 text-white">Farm to Bottle</h5>
+                                <p class="small text-white-50 mb-2">100% Real Fruit</p>
+                            </div>
+                            <button class="btn btn-sm btn-outline-light reel-play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <div class="product-badge bg-success text-white px-2 py-1 rounded-pill small">Bestseller</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reel 3: Energy Boost (similar to Energy Bars) -->
+            <div class="col-md-6 col-lg-3">
+                <div class="reel-card position-relative rounded-4 overflow-hidden">
+                    <video class="reel-video" loop muted playsinline poster="https://images.unsplash.com/photo-1551269901-5c5e14c25df7">
+                        <source src="https://example.com/videos/energy-boost.mp4" type="video/mp4">
+                    </video>
+                    <div class="reel-overlay p-3">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h5 class="mb-1 text-white">Morning Energy</h5>
+                                <p class="small text-white-50 mb-2">No Crash, Just Pure Fuel</p>
+                            </div>
+                            <button class="btn btn-sm btn-outline-light reel-play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <div class="product-badge bg-warning text-dark px-2 py-1 rounded-pill small">Trending</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reel 4: Crispy Texture (similar to Freeze Dried Corn) -->
+            <div class="col-md-6 col-lg-3">
+                <div class="reel-card position-relative rounded-4 overflow-hidden">
+                    <video class="reel-video" loop muted playsinline poster="https://images.unsplash.com/photo-1603569283847-aa295f0d016a">
+                        <source src="https://example.com/videos/texture-showcase.mp4" type="video/mp4">
+                    </video>
+                    <div class="reel-overlay p-3">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h5 class="mb-1 text-white">Pulp Experience</h5>
+                                <p class="small text-white-50 mb-2">Real Fruit Texture</p>
+                            </div>
+                            <button class="btn btn-sm btn-outline-light reel-play-btn"><i class="fas fa-play"></i></button>
+                        </div>
+                        <div class="product-badge bg-info text-white px-2 py-1 rounded-pill small">Fan Favorite</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="#" class="btn btn-outline-primary rounded-pill px-4">
+                <i class="fab fa-instagram me-2"></i> View More on Instagram
+            </a>
+        </div>
+    </div>
+</section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">Why Choose Our Juices</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a" class="img-fluid h-100 w-100" alt="Fresh Fruits" style="object-fit: cover;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title">Farm Fresh Ingredients</h4>
+                                    <p class="card-text">We source our fruits directly from local farms, ensuring maximum freshness and nutritional value in every bottle.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a" class="img-fluid h-100 w-100" alt="No Additives" style="object-fit: cover;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title">No Artificial Additives</h4>
+                                    <p class="card-text">Our juices contain no added sugars, preservatives, or artificial flavors - just pure, natural goodness.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a" class="img-fluid h-100 w-100" alt="Cold Pressed" style="object-fit: cover;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title">Cold Pressed Technology</h4>
+                                    <p class="card-text">We use cold-press extraction to preserve maximum nutrients and enzymes in our juices.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a" class="img-fluid h-100 w-100" alt="Eco Friendly" style="object-fit: cover;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h4 class="card-title">Eco-Friendly Packaging</h4>
+                                    <p class="card-text">Our bottles are made from 100% recycled materials and are fully recyclable.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">What Our Customers Say</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" class="testimonial-img me-3" alt="Customer">
+                            <div>
+                                <h5 class="mb-0">Sarah Johnson</h5>
+                                <div class="text-warning">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p>"The Orange Bliss juice tastes just like fresh squeezed oranges from my childhood. I can't believe how fresh it tastes!"</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" class="testimonial-img me-3" alt="Customer">
+                            <div>
+                                <h5 class="mb-0">Michael Chen</h5>
+                                <div class="text-warning">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p>"I've tried many green juices, but FreshSqueeze's Green Detox is by far the best tasting and most effective."</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="testimonial-img me-3" alt="Customer">
+                            <div>
+                                <h5 class="mb-0">Emily Rodriguez</h5>
+                                <div class="text-warning">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p>"The Berry Mix is my morning staple. It gives me energy without the crash of coffee. Love it!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4">Join Our Juice Club</h2>
+                    <p class="mb-5">Subscribe to our newsletter and get 10% off your first order, plus exclusive offers and health tips!</p>
+                    <form class="row g-2 justify-content-center">
+                        <div class="col-md-8">
+                            <input type="email" class="form-control form-control-lg" placeholder="Your email address">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-light btn-lg w-100">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a" alt="Our juice production" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title mb-4">Our Story</h2>
+                    <p>Founded in 2015, FreshSqueeze started as a small family farm selling fresh juices at local farmers markets. What began as a passion project quickly grew into a beloved regional brand, thanks to our commitment to quality and freshness.</p>
+                    <p>We partner with local farmers to source the freshest fruits at the peak of ripeness, ensuring maximum flavor and nutritional value in every bottle. Our state-of-the-art facility uses cold-press technology to preserve the natural goodness of the fruits.</p>
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary text-white rounded-circle p-3 me-3">
+                                    <i class="fas fa-leaf fs-4"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">100% Organic</h5>
+                                    <small>Certified ingredients</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary text-white rounded-circle p-3 me-3">
+                                    <i class="fas fa-heart fs-4"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Healthy Living</h5>
+                                    <small>Nutrition packed</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary mt-3">Learn More About Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">Frequently Asked Questions</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h3 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    Are your juices pasteurized?
+                                </button>
+                            </h3>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We use a gentle high-pressure processing (HPP) method that eliminates harmful bacteria while preserving nutrients and enzymes, unlike traditional heat pasteurization.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h3 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    How long do your juices last?
+                                </button>
+                            </h3>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Unopened, our juices last up to 30 days refrigerated. Once opened, we recommend consuming within 3 days for optimal freshness.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h3 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    Do you offer subscription services?
+                                </button>
+                            </h3>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes! Our Juice Club offers weekly or monthly deliveries with 15% discount and free shipping. You can customize your selection and pause anytime.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h3 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                    Where can I buy your juices?
+                                </button>
+                            </h3>
+                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Our juices are available in our online store, at our flagship location in Orchard City, and in select health food stores across California.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">Get In Touch</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-5">
+                            <h3 class="mb-4">Send us a message</h3>
+                            <form>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Subject">
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-5">
+                            <h3 class="mb-4">Contact Information</h3>
+                            <div class="d-flex mb-4">
+                                <div class="text-blue rounded-circle p-3 me-3">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h5>Visit Us</h5>
+                                    <p class="mb-0">123 Juice Lane, Orchard City, CA 90210</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-4">
+                                <div class="text-blue rounded-circle p-3 me-3">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h5>Call Us</h5>
+                                    <p class="mb-0">(555) 123-4567<br>Mon-Fri, 9am-5pm PST</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-4">
+                                <div class="text-blue rounded-circle p-3 me-3">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h5>Email Us</h5>
+                                    <p class="mb-0">info@freshsqueeze.com<br>support@freshsqueeze.com</p>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="text-blue rounded-circle p-3 me-3">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h5>Store Hours</h5>
+                                    <p class="mb-0">Monday - Friday: 9am - 7pm<br>
+                                    Saturday: 10am - 6pm<br>
+                                    Sunday: 11am - 5pm</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="p-0">
+        <div class="container-fluid p-0">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215256836689!2d-73.9878449241643!3d40.74844097138952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzU0LjQiTiA3M8KwNTknMTMuNiJX!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h4 class="mb-4">FreshSqueeze</h4>
+                    <p>Providing fresh, organic juices since 2015. Our mission is to make healthy living delicious and accessible to everyone.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#home" class="text-white">Home</a></li>
+                        <li class="mb-2"><a href="#products" class="text-white">Products</a></li>
+                        <li class="mb-2"><a href="#reels" class="text-white">Juice Reels</a></li>
+                        <li class="mb-2"><a href="#benefits" class="text-white">Benefits</a></li>
+                        <li class="mb-2"><a href="#about" class="text-white">About Us</a></li>
+                        <li class="mb-2"><a href="#contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4">Products</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white">Orange Bliss</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Apple Crunch</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Berry Mix</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Tropical Paradise</a></li>
+                        <li class="mb-2"><a href="#" class="text-white">Green Detox</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="mb-4">Newsletter</h5>
+                    <p>Subscribe to get updates on new products and special offers.</p>
+                    <form class="mt-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email">
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="mt-5 mb-4" style="border-color: rgba(255,255,255,0.1);">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2023 FreshSqueeze. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="#" class="text-white">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white">Terms of Service</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white">Shipping Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Your Shopping Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="cartItems">
+                                <!-- Cart items will be inserted here by JavaScript -->
+                                <tr>
+                                    <td colspan="5" class="text-center">Your cart is empty</td>
+                                </tr>
+                            </tbody>
+                            <tfoot id="cartTotals">
+                                <!-- Cart totals will be inserted here by JavaScript -->
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+                    <button type="button" class="btn btn-primary" id="checkoutBtn">Proceed to Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Cart functionality
+        let cart = [];
+        
+        // Initialize cart from localStorage if available
+        if (localStorage.getItem('cart')) {
+            cart = JSON.parse(localStorage.getItem('cart'));
+            updateCartCount();
+        }
+        
+        // Add to cart button click handler
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                const name = this.getAttribute('data-name');
+                const price = parseFloat(this.getAttribute('data-price'));
+                const image = this.getAttribute('data-image');
+                
+                addToCart(id, name, price, image);
+                
+                // Show success feedback
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Added';
+                this.classList.add('btn-success');
+                this.classList.remove('btn-primary');
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.classList.remove('btn-success');
+                    this.classList.add('btn-primary');
+                }, 1500);
+            });
+        });
+        
+        // Add item to cart
+        function addToCart(id, name, price, image) {
+            // Check if item already exists in cart
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id,
+                    name,
+                    price,
+                    image,
+                    quantity: 1
+                });
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Update cart count
+            updateCartCount();
+            
+            // Update cart modal if open
+            if (document.getElementById('cartModal').classList.contains('show')) {
+                updateCartModal();
+            }
+        }
+        
+        // Update cart count in navbar
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.querySelector('.cart-count').textContent = count;
+        }
+        
+        // Update cart modal content
+        function updateCartModal() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotals = document.getElementById('cartTotals');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<tr><td colspan="5" class="text-center">Your cart is empty</td></tr>';
+                cartTotals.innerHTML = '';
+                return;
+            }
+            
+            // Build cart items table
+            let itemsHtml = '';
+            let subtotal = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                itemsHtml += `
+                    <tr class="cart-item" data-id="${item.id}">
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="${item.image}" class="cart-modal-img me-3" alt="${item.name}">
+                                <span>${item.name}</span>
+                            </div>
+                        </td>
+                        <td>$${item.price.toFixed(2)}</td>
+                        <td>
+                            <div class="input-group" style="max-width: 120px;">
+                                <button class="btn btn-outline-secondary decrease-qty" type="button">-</button>
+                                <input type="text" class="form-control text-center qty-input" value="${item.quantity}">
+                                <button class="btn btn-outline-secondary increase-qty" type="button">+</button>
+                            </div>
+                        </td>
+                        <td>$${itemTotal.toFixed(2)}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-danger remove-item">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            // Calculate totals
+            const tax = subtotal * 0.08; // 8% tax
+            const total = subtotal + tax;
+            
+            // Build totals table
+            const totalsHtml = `
+                <tr>
+                    <td colspan="3"></td>
+                    <td class="fw-bold">Subtotal:</td>
+                    <td class="fw-bold">$${subtotal.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td colspan="3"></td>
+                    <td class="fw-bold">Tax (8%):</td>
+                    <td class="fw-bold">$${tax.toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td colspan="3"></td>
+                    <td class="fw-bold">Total:</td>
+                    <td class="fw-bold">$${total.toFixed(2)}</td>
+                </tr>
+            `;
+            
+            cartItems.innerHTML = itemsHtml;
+            cartTotals.innerHTML = totalsHtml;
+            
+            // Add event listeners to quantity buttons
+            document.querySelectorAll('.increase-qty').forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('.cart-item');
+                    const id = row.getAttribute('data-id');
+                    const item = cart.find(item => item.id === id);
+                    
+                    item.quantity += 1;
+                    saveAndUpdateCart();
+                });
+            });
+            
+            document.querySelectorAll('.decrease-qty').forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('.cart-item');
+                    const id = row.getAttribute('data-id');
+                    const item = cart.find(item => item.id === id);
+                    
+                    if (item.quantity > 1) {
+                        item.quantity -= 1;
+                        saveAndUpdateCart();
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('.cart-item');
+                    const id = row.getAttribute('data-id');
+                    
+                    cart = cart.filter(item => item.id !== id);
+                    saveAndUpdateCart();
+                });
+            });
+            
+            // Update quantity inputs
+            document.querySelectorAll('.qty-input').forEach(input => {
+                input.addEventListener('change', function() {
+                    const row = this.closest('.cart-item');
+                    const id = row.getAttribute('data-id');
+                    const item = cart.find(item => item.id === id);
+                    const newQty = parseInt(this.value) || 1;
+                    
+                    item.quantity = newQty;
+                    saveAndUpdateCart();
+                });
+            });
+        }
+        
+        // Save cart to localStorage and update UI
+        function saveAndUpdateCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartModal();
+        }
+        
+        // Checkout button click handler
+        document.getElementById('checkoutBtn').addEventListener('click', function() {
+            alert('Checkout functionality would be implemented here!');
+            // In a real application, this would redirect to a checkout page
+        });
+        
+        // Initialize cart modal when shown
+        document.getElementById('cartModal').addEventListener('show.bs.modal', function() {
+            updateCartModal();
+        });
+        
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Video Play/Pause Functionality
+    document.querySelectorAll('.reel-card').forEach(card => {
+        const video = card.querySelector('.reel-video');
+        const playBtn = card.querySelector('.reel-play-btn');
+        
+        card.addEventListener('mouseenter', () => {
+            video.play();
+            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            video.pause();
+            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        });
+        
+        playBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (video.paused) {
+                video.play();
+                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                video.pause();
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        });
+    });
+    
+    // Auto-play when in viewport (for mobile)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target.querySelector('.reel-video');
+            const playBtn = entry.target.querySelector('.reel-play-btn');
+            
+            if (entry.isIntersecting) {
+                video.play();
+                if (playBtn) playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                video.pause();
+                if (playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    document.querySelectorAll('.reel-card').forEach(card => {
+        observer.observe(card);
+    });
+    </script>
+</body>
+</html>
